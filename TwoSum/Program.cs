@@ -1,11 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 
 class TwoSum
 {
     public static Tuple<int, int> FindTwoSum(IList<int> list, int sum)
     {
-        throw new NotImplementedException("Waiting to be implemented.");
+        var listCount = list.Count;
+
+        for (int i=0; i < listCount; i++) 
+        { 
+            for (int j=0; j < listCount; j++) 
+            {
+                if (list[i] + list[j] == sum)
+                {
+                    return Tuple.Create(i, j); ;
+                }
+            }
+        }
+
+        return null;
     }
 
     public static void Main(string[] args)
