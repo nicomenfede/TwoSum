@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 
 class TwoSum
 {
     public static Tuple<int, int> FindTwoSum(IList<int> list, int sum)
     {
-        var listCount = list.Count;
+        var hs = new HashSet<int>();
+        list.ToList().ForEach(x => hs.Add(x));
 
-        for (int i=0; i < listCount; i++) 
-        { 
-            for (int j=0; j < listCount; j++) 
+        for (int i = 0; i < hs.Count; i++)
+        {
+            var diff = sum - list[i];
+            if (hs.Contains(diff) && i != list.IndexOf(diff))
             {
-                if (list[i] + list[j] == sum)
-                {
-                    return Tuple.Create(i, j); ;
-                }
+                var index = list.IndexOf(diff);
+                return new Tuple<int, int>(i, index);
             }
         }
 
