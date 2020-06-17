@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 class TwoSum
 {
@@ -8,7 +7,7 @@ class TwoSum
     {
         var hs = new HashSet<int>(list);
 
-        for (int i = 0; i < hs.Count; i++)
+        for (int i = 0; i < list.Count; i++)
         {
             var diff = sum - list[i];
             if (hs.Contains(diff) && i != list.IndexOf(diff))
